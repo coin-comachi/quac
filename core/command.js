@@ -25,7 +25,9 @@ const order = (side, argv) => {
   let order = new pri.createorder()
     .side(side)
     .product_id(product.get_product(argv[0]).id)
-    .quantity(argv[2]);
+    .quantity(argv[2])
+    .leverage_level(10)
+    .order_direction("netout");
 
   if (argv[1] == 'MARKET') {
     if (argv[3] !== null) {
