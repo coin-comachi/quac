@@ -269,3 +269,14 @@ module.exports.commands.cancel = new Command("qu_cancel")
       .executeSync();
   });
 
+module.exports.commands.account = new Command("qu_account")
+  .description("口座情報を表示します *")
+  .optionalArg("account_id", "口座ID", parseInt, null)
+  .action(argv => {
+    if (argv[0] !== null) {
+      return new pri.gettradingaccount()
+        .id(argv[0])
+        .executeSync();
+    }
+    return new pri.gettradingaccounts().executeSync();
+  });
